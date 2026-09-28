@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Site QR</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body style="display:flex;justify-content:center;align-items:center;height:100vh;">
+
+  <div id="qrcode"></div>
+
+  <script>
+    new QRCode(document.getElementById("qrcode"), {
+      text: "https://musical-starburst-fbbb6c.netlify.app/",
+      width: 250,
+      height: 250
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="theme-color" content="#000000"/>
+  <title>BOXING LAB | Connect With Us</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    html, body {
+      margin: 0;
+      min-height: 100vh;
+      transition: background 0.4s ease, color 0.4s ease;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      text-align: center;
+      padding: 30px 15px; /* reduced padding for mobile */
+    }
+
+    /* ── DARK MODE ── */
+    .dark {
+      background: #000000;
+      color: #ffffff;
+    }
+
+    .dark .text-muted     { color: #bbbbbb; }
+    .dark .note           { color: #888888; }
+    .dark .button-bg      { background: #111111; }
+    .dark .button-bg:hover{ background: #222222; }
+    .dark .shadow-normal  { box-shadow: 0 4px 15px rgba(0,0,0,0.40); }
+    .dark .shadow-hover   { box-shadow: 0 12px 30px rgba(0,0,0,0.70); }
+    .dark .icon-white     { filter: brightness(0) invert(1); }
+
+    .dark .icon-circle i,
+    .dark .label {
+      color: white !important;
+    }
+
+    /* ── LIGHT MODE ── */
+    .light {
+      background: #ffffff;
+      color: #000000;
+    }
+
+    .light .text-muted    { color: #444444; }
+    .light .note          { color: #666666; }
+    .light .button-bg     { background: #eeeeee; }
+    .light .button-bg:hover{ background: #dddddd; }
+    .light .shadow-normal { box-shadow: 0 4px 15px rgba(0,0,0,0.18); }
+    .light .shadow-hover  { box-shadow: 0 12px 30px rgba(0,0,0,0.35); }
+
+    .light .icon-circle i,
+    .light .label {
+      color: #000000 !important;
+    }
+
+    .header {
+      margin-bottom: 40px;
+    }
+
+    .logo {
+      width: 120px; /* smaller logo on all devices */
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto 15px;
+      transition: all 0.3s ease;
+    }
+
+    .logo:hover {
+      transform: scale(1.08);
+    }
+
+    h1 {
+      font-size: 2.1rem;
+      font-weight: 800;
+      margin: 8px 0;
+      letter-spacing: 1px;
+    }
+
+    .tagline {
+      font-size: 1rem;
+      margin-bottom: 20px;
+    }
+
+    .add-contact {
+      display: inline-block;
+      color: inherit;
+      padding: 12px 28px;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      margin: 0 0 40px;
+      transition: all 0.3s;
+    }
+
+    .add-contact:hover {
+      transform: translateY(-3px);
+    }
+
+    .contacts-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* 3 per row on desktop/tablet */
+      gap: 35px 20px; /* tighter for mobile */
+      max-width: 420px;
+      margin: 0 auto 50px;
+      justify-items: center;
+    }
+
+    @media (max-width: 520px) {
+      .contacts-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 per row on phones */
+        gap: 30px 18px;
+        max-width: 360px;
+      }
+      .icon-circle {
+        width: 70px;
+        height: 70px;
+      }
+      .icon-circle i {
+        font-size: 2.2rem;
+      }
+      .label {
+        font-size: 0.9rem;
+        max-width: 100px;
+      }
+      h1 {
+        font-size: 1.9rem;
+      }
+      .add-contact {
+        padding: 10px 24px;
+        font-size: 0.95rem;
+      }
+      .logo {
+        width: 110px;
+        height: 110px;
+      }
+      body {
+        padding: 25px 12px;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .contacts-grid {
+        grid-template-columns: 1fr; /* 1 per row on very small phones */
+        gap: 28px 0;
+      }
+    }
+
+    .contact-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .icon-circle {
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      border: none;
+      transition: all 0.3s ease;
+    }
+
+    .icon-circle:hover {
+      transform: scale(1.08);
+    }
+
+    .icon-link {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      text-decoration: none !important;
+      color: inherit;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .icon-circle i {
+      font-size: 2.7rem;
+    }
+
+    .label {
+      font-size: 1rem;
+      font-weight: 500;
+      line-height: 1.3;
+      max-width: 110px;
+      word-break: break-word;
+    }
+
+    .bottom-controls {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      margin-top: 35px;
+      flex-wrap: wrap;
+    }
+
+    .control-btn {
+      color: inherit;
+      border: none;
+      padding: 10px 22px;
+      border-radius: 50px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s;
+    }
+
+    .control-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .bottom-note {
+      margin-top: 50px;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <img src="كابتن عبدو (تصميم لوجو)2.png" alt="BOXING LAB" class="logo shadow-normal">
+
+    <h1>BOXING LAB</h1>
+    <p>SPORTS CLUB</p>
+    <p class="tagline text-muted">BOXING | KICKBOXING | CROSSFIT</p>
+  </div>
+
+  <div class="contacts-grid">
+
+    
+
+    <div class="contact-item">
+      <a href="https://wa.me/201113513093?text=Hello%20BOXING%20LAB" target="_blank" class="icon-link">
+        <div class="icon-circle button-bg shadow-normal">
+          <i class="fab fa-whatsapp"></i>
+        </div>
+      </a>
+      <div class="label text-muted">WhatsApp</div>
+    </div>
+
+    <div class="contact-item">
+      <a href="https://ipn.eg/S/abdooo8899/instapay/46ga5H" target="_blank" class="icon-link">
+        <div class="icon-circle button-bg shadow-normal">
+          <i class="fas fa-wallet"></i>
+        </div>
+      </a>
+      <div class="label text-muted">InstaPay</div>
+    </div>
+
+     <div class="contact-item">
+      <a href="tel:+201113513093" class="icon-link">
+        <div class="icon-circle button-bg shadow-normal">
+          <i class="fas fa-phone"></i>
+        </div>
+      </a>
+      <div class="label text-muted">Head Coach</div>
+    </div>
+
+    <div class="contact-item">
+      <a href="https://www.instagram.com/boxing___lab?igsh=OHVrZnNpMmVwOWIx" target="_blank" class="icon-link">
+        <div class="icon-circle button-bg shadow-normal">
+          <i class="fab fa-instagram"></i>
+        </div>
+      </a>
+      <div class="label text-muted">Instagram</div>
+    </div>
+
+    <div class="contact-item">
+      <a href="https://maps.app.goo.gl/1nkLFJ3GBbPtfnqV7" target="_blank" class="icon-link">
+        <div class="icon-circle button-bg shadow-normal">
+          <i class="fas fa-map-marker-alt"></i>
+        </div>
+      </a>
+      <div class="label text-muted">CAPITAL INTERNATIONAL SCHOOL</div>
+    </div>
+
+    <div class="contact-item">
+      <a href="https://maps.app.goo.gl/XEWMoje2yZ92nJrcA" target="_blank" class="icon-link">
+        <div class="icon-circle button-bg shadow-normal">
+          <i class="fas fa-map-marker-alt"></i>
+        </div>
+      </a>
+      <div class="label text-muted">BEDAYA INTERNATIONAL SCHOOL</div>
+    </div>
+
+    <div class="contact-item">
+      <a href="https://maps.app.goo.gl/QfvoiSAW7tHamCAMA" target="_blank" class="icon-link">
+        <div class="icon-circle button-bg shadow-normal">
+          <i class="fas fa-map-marker-alt"></i>
+        </div>
+      </a>
+      <div class="label text-muted">SODIC - VILLETTE</div>
+    </div>
+
+   
+
+  </div>
+
+  <div class="bottom-controls">
+    <button class="control-btn button-bg shadow-normal" id="themeToggle">
+      <i class="fas fa-moon"></i> Toggle Theme
+    </button>
+    <button class="control-btn button-bg shadow-normal" id="shareBtn">
+      <i class="fas fa-share-alt"></i> Share Link
+    </button>
+  </div>
+
+  <p class="bottom-note note">BOXING LAB – Cairo, Egypt</p>
+
+  <script>
+    const html = document.documentElement;
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = themeToggle.querySelector('i');
+
+    function setTheme(isDark) {
+      if (isDark) {
+        html.classList.remove('light');
+        html.classList.add('dark');
+        themeIcon.className = 'fas fa-moon';
+        document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+      } else {
+        html.classList.remove('dark');
+        html.classList.add('light');
+        themeIcon.className = 'fas fa-sun';
+        document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff');
+      }
+
+      document.body.style.display = 'none';
+      void document.body.offsetHeight;
+      document.body.style.display = '';
+    }
+
+    const saved = localStorage.getItem('theme') || 'dark';
+    setTheme(saved === 'dark');
+
+    themeToggle.addEventListener('click', () => {
+      const isCurrentlyDark = html.classList.contains('dark');
+      setTheme(!isCurrentlyDark);
+      localStorage.setItem('theme', !isCurrentlyDark ? 'light' : 'dark');
+    });
+
+    document.getElementById('shareBtn').addEventListener('click', async () => {
+      const url = window.location.href;
+      const title = 'BOXING LAB - Training & Contact';
+      const text = 'Connect with BOXING LAB in Cairo – Train Hard, Fight Smart!';
+
+      if (navigator.share) {
+        try {
+          await navigator.share({ title, text, url });
+          return;
+        } catch {}
+      }
+
+      try {
+        await navigator.clipboard.writeText(url);
+        alert('Link copied to clipboard!');
+      } catch {
+        alert('Could not copy. Please copy manually:\n' + url);
+      }
+    });
+  </script>
+
+</body>
+</html>
